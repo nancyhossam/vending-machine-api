@@ -42,10 +42,6 @@ A RESTful API for managing vending machines and their inventories. This project 
 
 ## API Documentation
 
-### Authentication Endpoints
-POST /api/auth/register - Register new user
-POST /api/auth/login - Login user
-
 ### Vending Machine Endpoints
 GET /api/vending-machines - List all machines
 POST /api/vending-machines - Create new machine
