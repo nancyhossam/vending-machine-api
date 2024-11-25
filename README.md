@@ -42,31 +42,41 @@ A RESTful API for managing vending machines and their inventories. This project 
 
 ## API Documentation
 
-### Vending Machine Endpoints
-GET /api/vending-machines - List all machines
-POST /api/vending-machines - Create new machine
-GET /api/vending-machines/:id - Get machine details
-PUT /api/vending-machines/:id - Update machine
-DELETE /api/vending-machines/:id - Delete machine
+### API Endpoints
 
-### Inventory Endpoints (Admin Only)
-GET /api/inventory/:machineId - List machine inventory
-POST /api/inventory/:machineId - Add inventory item
-PUT /api/inventory/:id - Update inventory item
-DELETE /api/inventory/:id - Delete inventory item
+#### Authentication
+| Method | Endpoint | Description | Access |
+|--------|----------|-------------|---------|
+| POST | `/api/auth/register` | Register new user | Public |
+| POST | `/api/auth/login` | Login user | Public |
 
+#### Vending Machines
+| Method | Endpoint | Description | Access |
+|--------|----------|-------------|---------|
+| GET | `/api/vending-machines` | List all machines | Private |
+| POST | `/api/vending-machines` | Create new machine | Private |
+| GET | `/api/vending-machines/:id` | Get machine details | Private |
+| PUT | `/api/vending-machines/:id` | Update machine | Private |
+| DELETE | `/api/vending-machines/:id` | Delete machine | Private |
+
+#### Inventory (Admin Only)
+| Method | Endpoint | Description | Access |
+|--------|----------|-------------|---------|
+| GET | `/api/inventory/:machineId` | List machine inventory | Admin |
+| POST | `/api/inventory/:machineId` | Add inventory item | Admin |
+| PUT | `/api/inventory/:id` | Update inventory item | Admin |
+| DELETE | `/api/inventory/:id` | Delete inventory item | Admin |
 
 ### Query Parameters
-- Search:
-  - `name`: Search by machine name
-  - `city`: Search by city
-  - `minPrice`: Minimum price filter
-  - `maxPrice`: Maximum price filter
-  - `startDate`: Start date filter
-  - `endDate`: End date filter
-- Sorting:
-  - `sortBy`: Field to sort by
-  - `sortOrder`: 'asc' or 'desc'
-- Pagination:
-  - `page`: Page number
-  - `limit`: Items per page
+| Parameter | Description | Example |
+|-----------|-------------|---------|
+| `name` | Filter by machine name | `?name=Snack` |
+| `city` | Filter by city | `?city=New%20York` |
+| `minPrice` | Minimum price filter | `?minPrice=1.50` |
+| `maxPrice` | Maximum price filter | `?maxPrice=5.00` |
+| `startDate` | Start date filter | `?startDate=2024-01-01` |
+| `endDate` | End date filter | `?endDate=2024-12-31` |
+| `sortBy` | Field to sort by | `?sortBy=name` |
+| `sortOrder` | Sort direction (asc/desc) | `?sortOrder=desc` |
+| `page` | Page number | `?page=1` |
+| `limit` | Items per page | `?limit=10` |
