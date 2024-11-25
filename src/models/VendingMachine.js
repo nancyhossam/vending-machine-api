@@ -24,6 +24,9 @@ const vendingMachineSchema = new mongoose.Schema({
   timestamps: true
 });
 
-vendingMachineSchema.index({ name: 'text', 'location.city': 'text' });
+vendingMachineSchema.index({ name: 'text' });
+vendingMachineSchema.index({ installedAt: 1 });
+vendingMachineSchema.index({ 'location.city': 'text' });
+vendingMachineSchema.index({ 'location.address': 'text' });
 
 module.exports = mongoose.model('VendingMachine', vendingMachineSchema);

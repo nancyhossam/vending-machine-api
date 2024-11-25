@@ -5,7 +5,7 @@ const rateLimit = require('express-rate-limit');
 const errorHandler = require('./middleware/errorHandler');
 const vendingMachineRoutes = require('./routes/vendingMachineRoutes');
 const inventoryRoutes = require('./routes/inventoryRoutes');
-
+const authRoutes = require('./routes/authRoutes');
 const app = express();
 
 // Security middleware
@@ -22,7 +22,7 @@ app.use(limiter);
 // Routes
 app.use('/api/vending-machines', vendingMachineRoutes);
 app.use('/api/inventory', inventoryRoutes);
-
+app.use('/api/auth', authRoutes);
 // Error handling
 app.use(errorHandler);
 
